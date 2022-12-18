@@ -29,14 +29,11 @@ public class Pokerito {
 
             System.out.print( // prints out the random card
                 "Card " + i + "\n"
-                    + randomCard()
+                    + riverCard
             );
 
-            if (riverCard.equals(yourCard)) { // checks if card equals player's card
-                yourMatches++;
-            } else if (riverCard.equals(computerCard)) { // checks if card equals computer's card
-                computerMatches++;
-            }
+            yourMatches += checkMatch(riverCard, yourCard);
+            computerMatches += checkMatch(riverCard, computerCard);
 
             scan.nextLine();
         }
@@ -96,6 +93,19 @@ public class Pokerito {
         } else {
             System.out.println("\nTie!");
         }
+    }
+    
+    
+    /**
+     * Checks if the river card matches with the player's card. Returns 1 if it matches,
+     * and 0 if it doesn't that will be added to number of matches.
+     *
+     * @param riverCard - the rivercard                                      - (String)
+     * @param playerCard - the player's card                                 - (String)
+     * @return - the number that will be added to number of matches variable - (int)
+     */
+    public static int checkMatch(String riverCard, String playerCard) {
+        return (riverCard.equals(playerCard)) ? 1 : 0;
     }
 
 
