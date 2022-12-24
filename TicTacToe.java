@@ -17,6 +17,10 @@ public class TicTacToe {
                 populateBoard('O', playboard);
                 printBoard(playboard);
             }
+
+            if (checkWin(playboard) == 3) {
+                System.out.print("WIN!");
+            }
         }
         scan.close();
     }
@@ -73,6 +77,54 @@ public class TicTacToe {
      *   5. Check the right diagonal for a straight X or straight O (Task 10).
      */
 
+    public static int checkWin(char[][] board) {
+        if (checkHorizontal(board) == 3 || checkHorizontal(board) == -3) {
+            return checkHorizontal(board);
+        } else if (checkVertical(board) == 3 || checkVertical(board) == -3) {
+            return checkVertical(board);
+        }
+        return 0;
+    }
 
 
+
+
+
+    public static int checkHorizontal(char[][] board) {
+        int count = 0;
+        for (int i = 0; i < board.length; i++) {        // new row
+            for (int j = 0; j < board[i].length; j++) { // checks row
+                if (board[i][j] == 'X') {               // if 'X'// , count =+ 1
+                    count++;
+                } else if (board[i][j] == 'O') {        // if 'O', count =- 1
+                    count--;
+                }
+            }
+            if (count == -3 || count == 3) {            // win if count is 3 or -3
+                return count;
+            } else {
+                count = 0;
+            }
+        }
+        return count;
+    }
+
+    public static int checkVertical(char[][] board) {
+        int count = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[j][i] == 'X') {
+                    count++;
+                } else if (board[j][i] == 'O') {
+                    count--;
+                }
+            }
+            if (count == -3 || count == 3) {            // win if count is 3 or -3
+                return count;
+            } else {
+                count = 0;
+            }
+        }
+        return count;
+    }
 }
