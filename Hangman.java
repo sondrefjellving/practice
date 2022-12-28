@@ -130,6 +130,11 @@ public class Hangman {
         System.out.print(gallows[wrongGuesses]);
     }
 
+    /**
+     * Checks for the users guess and returns it if it follows the requirements.
+     *
+     * @return the guess - (String)
+     */
     public static String makeGuess() {
         System.out.print("\nGuess: ");
         String guess = scan.nextLine();
@@ -140,6 +145,15 @@ public class Hangman {
         return guess;
     }
 
+    
+    /**
+     * Checks if the guess that is sent in as argument exists in the word that it will be
+     * checked against.
+     *
+     * @param guess the guess to be checked               - (String)
+     * @param checkAgainst the word to be checked against - (String[])
+     * @return
+     */
     public static boolean checkGuess(String guess, String[] checkAgainst) {
         for (int i = 0; i < checkAgainst.length; i++) {
             if (checkAgainst[i].equalsIgnoreCase(guess)) {
@@ -149,11 +163,23 @@ public class Hangman {
         return false;
     }
 
+    /**
+     * Prints the last guess.
+     *
+     * @param guess the guess - (String)
+     */
     public static void printLastGuess(String guess) {
         System.out.print("\nGuess:\t" + guess + "\n");
     }
 
 
+    /**
+     * Creates a placeholder that has the same length as the random word and
+     * every letter is a '_' symbol.
+     *
+     * @param word the word used to create a placeholder - (String[])
+     * @return the placeholder                           - (String[])
+     */
     public static String[] createPlaceholder(String[] word) {
         String[] placeholder = new String[word.length];
         Arrays.fill(placeholder, "_");
