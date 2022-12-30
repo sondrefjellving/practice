@@ -1,0 +1,36 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+/**
+ * Simple program that reads a file and
+ * shows how a Checked exception can be caught.
+ * This example is from The Complete Java Development Bootcamp course on Udemy (link in README).
+ *
+ * @author sondrefjellvingandersen
+ */
+public class CheckedExceptionExample {
+    public static void main(String[] args) {
+        try {
+            readFile("greetings.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println("Process Complete");
+        }
+    }
+
+
+    /**
+     * Reads the file that gets sent in as an argument.
+     *
+     * @param fileName the path to the file that will be read               - (String)
+     * @throws FileNotFoundException the checked exception that gets thrown - (Exception)
+     */
+    public static void readFile(String fileName) throws FileNotFoundException {
+        FileInputStream fis = new FileInputStream(fileName);
+        Scanner scanner = new Scanner(fis);
+        System.out.println(scanner.nextLine());
+        scanner.close();
+    }
+}
